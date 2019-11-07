@@ -17,6 +17,8 @@ use Symfony\Component\DomCrawler\Crawler;
  */
 class NieruchomosciOnlinePlParser implements BodyParserInterface
 {
+    public const SOURCE = 'nieruchomosci_online_pl';
+
     /**
      * Method that parses the $body and returns the OfferRecord as the result
      * $uri parameter is added to help handling relative paths
@@ -31,7 +33,7 @@ class NieruchomosciOnlinePlParser implements BodyParserInterface
 
         $offerRecordBuilder = new OfferRecordBuilder();
         $offerRecordBuilder->setUri($uri);
-        $offerRecordBuilder->setSource('nieruchomosci_online_pl');
+        $offerRecordBuilder->setSource(self::SOURCE);
         $offerRecordBuilder->setSourceOfferId(
             $crawler->filter('[name="idData"]')->attr('value')
         );
